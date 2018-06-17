@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #262c3a !important;
+}
+a.button-go-to-file{
+  color :white!important;
+  text-decoration-line: none!important;
+}
+a.button-go-to-file:hover{
+  text-decoration-line: none !important;
+  color :white !important;
+}
+.Pagimagic__nav-item{
+  background: #00bebe!important;
+  border-radius: 50% !important;
+  color: #e4e4e4 !important;
+  border:whitesmoke !important;
+  line-height:1.8em!important;
+  width: 2em!important;
+  height: 2em!important;
+}
+.Pagimagic__nav-item--active{
+  background: #cccccc !important;
+  color: #262c3a !important;
+}
+
+.Pagimagic__nav{
+  margin-top: 20px!important; ;
+ text-align: center!important;
+}
+.Pagimagic-nav-arrow{
+ width: 1.5em!important;
+ height: 1.5em!important;
+  margin: 0.2em!important;
+}
+.Pagimagic__nav-item--next{
+  background: none!important;
+}
+.Pagimagic__nav-item--prev{
+  background: none!important;
+}
+.Pagimagic__break{
+  border-radius: 50% !important;
+  background: #cccccc !important;
+  color: #262c3a !important;
+  line-height:1.8em!important;
+  width: 2em!important;
+  height: 2em!important;
+}
+path{
+
+  fill: white !important;;
+}

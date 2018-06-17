@@ -1,0 +1,38 @@
+{
+  "name": "web-text-statistic-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "chardet": "^0.5.0",
+    "jschardet": "^1.6.0",
+    "kk-react-pagination": "^1.1.2",
+    "prop-types": "^15.6.1",
+    "query-string": "^6.1.0",
+    "react": "^16.4.0",
+    "react-background-image-loader": "0.0.5",
+    "react-dom": "^16.4.0",
+    "react-dropzone": "^4.2.11",
+    "react-file-reader": "^1.1.4",
+    "react-navbar": "^1.1.1",
+    "react-pagimagic": "^1.4.0",
+    "react-paginate": "^5.2.3",
+    "react-pagination-custom": "^1.0.7",
+    "react-progressive-image": "^0.3.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "reactjs-navigation": "^0.3.9",
+    "styled": "^1.0.0",
+    "tiny-custom-pagination": "^1.0.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-progressive-bg-image": "^3.0.0"
+  }
+}

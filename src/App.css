@@ -1,0 +1,194 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error-page{
+  position:absolute;
+  height: 100%;
+  width: 100%;
+
+}
+.img-error{
+    height: 100%;
+    background-position: center center;
+    background-size: contain;
+}
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #262c3a;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.button-circle{
+  border-radius: 50%;
+  margin: 2% 2%;
+  height: 2em;
+  width: 2em;
+  border: 1px lavender;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#008181), to(#00bebe), color-stop(0.5, #286e62));
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+  color: #cccccc;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.button-circle:hover{
+  background-color: #00bebe;
+}
+
+.uploadHead{
+
+  color: #b4b4b4;
+  text-align: center;
+  height: 50px;
+}
+.drop-zone{
+  padding: 1%;
+  text-align: center;
+  color: #b4b4b4;
+  width: 20%;
+  height: 100%;
+  border: 2px dashed  #00bebe;
+  border-radius: 5px;
+  margin:  10px auto;
+  cursor: pointer;
+  vertical-align: middle !important;
+
+}
+.form{
+  margin: auto;
+  text-align: center;
+}
+.button-send-text {
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#008181), to(#00bebe), color-stop(0.5, #286e62));
+  text-align: center;
+  vertical-align: center;
+  margin: auto;
+  height: 40px;
+  border: #008181;
+  border-radius: 3px ;
+  cursor: pointer;
+  color: #cccccc;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.button-send-text :active{
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e7e8), to(#bec0c2), color-stop(0.5, #e9e9ea));
+  color:#262c3a;
+  box-shadow: 0 0 10px rgba(0, 190, 190, 0.5);
+}
+.text-area-field{
+  text-align: center;
+  border-radius: 15px;
+  color: #b4b4b4;
+  background-color: #262c3a ;
+  border: 3px dashed  #00bebe;
+}
+textarea , input {outline: none}
+.lines , .texts{
+  color: #b4b4b4;
+  padding: 5px;
+}
+.texts{
+  float: left;
+  width: 50%;
+
+}
+.statistic{
+  color: #00bebe;
+}
+.empty{
+  color: #6e6e6e;
+}
+.block-statistic{
+  border-radius: 15px;
+  color: #b4b4b4;
+  background-color: #262c3a ;
+  border: 3px dashed  #00bebe;
+}
+.lineHeader{
+  text-align: center;
+  color: #b4b4b4;
+}
+.blocks{
+  display: table;
+  margin: 2%;
+}
+.blocks-line{
+  margin: auto;
+  float: right;
+  width: 50%;
+
+}
+.inputMinLines{
+  margin: 0 2%;
+  text-align: center;
+  width: 80px;
+  height: 35px;
+  border-radius: 15px;
+  color: #b4b4b4;
+  background-color: #262c3a ;
+  border: 3px dashed  #00bebe;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.button-send-min-lines {
+  margin: 0 2%;
+}
+.all-text-statistic{
+  display: inline-block;
+  height:8em;
+  /*width: 30%;*/
+  padding: auto;
+  margin:1em 1em 1em auto;
+  text-align: left;
+}
+li .button-go-to-file{
+  list-style-type:none;
+  margin-bottom: 2em;
+}
+a{
+  color :white!important;
+  text-decoration-line: none !important;
+}
+a{
+  text-decoration-line: none !important;
+  color :white !important;
+}
+.button-go-to-file{
+  flex: auto;
+  width:100%;
+  text-align: center !important;
+  color: crimson!important;
+}
