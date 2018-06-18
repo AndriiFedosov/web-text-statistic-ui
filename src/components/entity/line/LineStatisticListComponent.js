@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import LineService from "../../../utils/Service";
 import "../../../App.css"
 import Pagimagic from 'react-pagimagic';
+import EmptyPage from "../../errors/EmptyPage";
 
 
 class LineStatisticListComponent extends Component{
@@ -10,7 +11,7 @@ class LineStatisticListComponent extends Component{
         super(props);
 
         this.servise = new LineService();
-        this.state ={lines:[]}
+        this.state ={lines:[],hasError:false}
     }
     componentDidMount(){
         this.createLineStatistic()
@@ -22,10 +23,14 @@ class LineStatisticListComponent extends Component{
     }
 
     createLineStatistic(){
-        this.servise.getAllLinesInFile(this.props.id).then(page => {
-            let list = page.components;
-            this.setState({lines:list});
-        });
+        this.servise.getAllLinesInFile(this.props.id).then(entity =>{
+                if (entity === 404){
+                    this.setState({hasError:true})
+                }
+                else {let lines = entity.components;
+                    this.setState({lines:lines})}
+            });
+
     }
     child(lines){
         return(
@@ -52,22 +57,27 @@ class LineStatisticListComponent extends Component{
 
     }
     render(){
-        const lines = this.state.lines;
-        return(
-            <div className="blocks-line">
-                <div className="lines ">
-                    <h2 className="lineHeader">Статистика линий</h2>
-                    <Pagimagic
-                        list={lines}
-                        itemsPerPage={1}
-                        currentPageIndex={0}
-                        maximumVisiblePaginators={5}
-                        renderChildren={this.child}
-                        useDefaultStyles
-                    />
+        if (this.state.hasError){
+            return <EmptyPage/>
+        }
+        else {
+            const lines = this.state.lines;
+            return(
+                <div className="blocks-line">
+                    <div className="lines ">
+                        <h2 className="lineHeader">Статистика линий</h2>
+                        <Pagimagic
+                            list={lines}
+                            itemsPerPage={1}
+                            currentPageIndex={0}
+                            maximumVisiblePaginators={5}
+                            renderChildren={this.child}
+                            useDefaultStyles
+                        />
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 
 }

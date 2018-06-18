@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
-import Utils from "../../../utils/Utils";
 import TextStatisticService from "../../../utils/Service.js";
 import * as queryString from "query-string";
 import {Link} from 'react-router-dom'
 import Pagimagic from 'react-pagimagic';
+import EmptyPage from "../../errors/EmptyPage";
+import LineStatisticListComponent from "../line/LineStatisticListComponent";
 
 class TextStatisticListComponent extends Component{
     constructor(props){
@@ -11,7 +12,8 @@ class TextStatisticListComponent extends Component{
         this.service = new TextStatisticService();
         this.filter = { minLines: TextStatisticListComponent.getMinimumLines(this.props)};
         this.state={
-            texts:[]
+            texts:[],
+            hasError:false
         }
     }
     componentDidMount(){
@@ -23,7 +25,13 @@ class TextStatisticListComponent extends Component{
         if (!_minLines || _minLines < 1) { _minLines = 1; }
         return _minLines;
     }
-
+    static searchWithParams(name , query){
+        let parameter = queryString.parse(query)[name];
+        if(!parameter || parameter < 1){
+            parameter = 1;
+        }
+        return parameter;
+    }
     handleMinimumLinesApply(e){
         this.filter.minLines = e.target.value
     }
@@ -31,13 +39,16 @@ class TextStatisticListComponent extends Component{
     searchAllFilesWithMinLines() {
         this.service.getAllTexts(this.filter.minLines)
             .then(entity =>{
-                let texts = entity.components;
-                this.setState({texts:texts})
+                if (entity ===404){
+                   this.setState({hasError:true})
+                }
+                else {let texts = entity.components;
+                this.setState({texts:texts})}
             });
     }
 
     componentWillReceiveProps(nextProps){
-        this.filter.minLines =Utils.searchWithParams("minLines" ,nextProps.location.search);
+        this.filter.minLines = LineStatisticListComponent.searchWithParams("minLines" ,nextProps.location.search);
         this.searchAllFilesWithMinLines();
     }
 
@@ -66,40 +77,44 @@ class TextStatisticListComponent extends Component{
                         <Link  to={'/texts/'+text.id}>Перейти к статистике текста</Link>
                     </button>
                     </div>
-                    <div style={{width:50,paddingBottom:50}}></div>
+                    <div style={{width:50,paddingBottom:50}}/>
                 </div>
             ))}
         </div>);
     }
     render(){
-        const texts = this.state.texts;
-        return(
-            <div >
-                <div className="lineHeader">
-                    <h2>Статистика всех фалов</h2>
-                    <div>
-                        <p>Поиск текста по минимальному количеству линий в файле</p>
+        if (this.state.hasError){
+            return <EmptyPage/>
+        } else {
+            const texts = this.state.texts;
+            return(
+                <div >
+                    <div className="lineHeader">
+                        <h2>Статистика всех фалов</h2>
                         <div>
-                            <form onSubmit={this.submitFormHandler.bind(this)}>
-                                <h4> Минимальное количество строк :
-                                    <input className="inputMinLines" type="number" min={1}
-                                        defaultValue={this.filter.minLines}
-                                           onChange={this.handleMinimumLinesApply.bind(this)}/>
-                                    <input className="button-send-text" type="submit" value="Отправить"/>
-                                </h4>
-                            </form>
+                            <p>Поиск текста по минимальному количеству линий в файле</p>
+                            <div>
+                                <form onSubmit={this.submitFormHandler.bind(this)}>
+                                    <h4> Минимальное количество строк :
+                                        <input className="inputMinLines" type="number" min={1}
+                                               defaultValue={this.filter.minLines}
+                                               onChange={this.handleMinimumLinesApply.bind(this)}/>
+                                        <input className="button-send-text" type="submit" value="Отправить"/>
+                                    </h4>
+                                </form>
+                            </div>
                         </div>
-                </div>
-                    <Pagimagic list={texts}
-                           itemsPerPage={1}
-                           currentPageIndex={0}
-                           maximumVisiblePaginators={5}
-                           renderChildren={this.child}
-                           useDefaultStyles
-                    />
-                </div>
-            </div>
-        );
+                        <Pagimagic list={texts}
+                                   itemsPerPage={1}
+                                   currentPageIndex={0}
+                                   maximumVisiblePaginators={5}
+                                   renderChildren={this.child}
+                                   useDefaultStyles
+                        />
+                    </div>
+                    <div style={{color:'#b4b4b4',position:'absolute' ,bottom:5,right:5}}>Write by Andrii Fedosov</div>
+                </div>);
+        }
     }
 }
 export default TextStatisticListComponent

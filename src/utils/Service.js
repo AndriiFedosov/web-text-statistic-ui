@@ -12,7 +12,12 @@ class Service{
         }
         return Promise.resolve(
             fetch(url)
-                .then(response =>{ return response.json(); })
+                .then(response =>{ if (response.status === 200){
+                    return response.json()
+                }else{
+                    console.log(response.status);
+                    return response.status}
+                })
                 .then(text => {return text})
         );
     }
@@ -21,7 +26,12 @@ class Service{
         let url = this.api  + '/' + id + '/lines';
         return Promise.resolve(
             fetch(url)
-                .then(response =>{ return response.json()})
+                .then(response =>{if (response.status===200){
+                    return response.json();
+                }else {
+                    console.log(response.status);
+                    return response.status
+                }})
                 .then(lines => {return lines}));
     }
 
@@ -29,8 +39,13 @@ class Service{
         let url = this.api  + '/' + id + '/text';
         return Promise.resolve(
             fetch(url)
-                .then(response =>{
-                    return response.json()})
+                .then(response =>{ if (response.status === 200){
+                    console.log(response.status);
+                    return response.json()
+                }else{
+                    console.log(response.status);
+                    return response.status}
+                })
                 .then(text =>{ return text}))
             ;
     }
@@ -43,7 +58,9 @@ class Service{
                 headers:Constants.API_HEADERS,
                 body: JSON.stringify({text:text})
             })
-                .then(response => {return response.json()})
+                .then(response =>{
+                    return response.json();
+                })
                 .then(id => {return id})
                 .then(longestWord=>{ return longestWord})
                 .then(shortestWord=>{ return shortestWord})

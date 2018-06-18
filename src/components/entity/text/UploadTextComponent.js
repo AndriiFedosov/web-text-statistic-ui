@@ -41,14 +41,14 @@ class UploadTextComponent extends Component{
 
     render(){
         return(
-            <div className="upload">
+            <div className="container upload">
                <div className="uploadHead">
                    <h3 >Введите свой текст.</h3>
                </div>
                 <div className="form">
                         <form>
                             <textarea placeholder={this.state.placeholder}
-                                      className="text-area-field" cols={130} rows={15}
+                                      className="text-area-field" cols={125} rows={13}
                                       onChange={e => this.setState({text:e.target.value})}/>
                         </form>
                 </div>
@@ -57,8 +57,9 @@ class UploadTextComponent extends Component{
                                   onDrop={(acceptedFiles, rejectedFiles) => {this.onDrop(acceptedFiles,rejectedFiles)}}>
                                   {this.state.textName}
                         </Dropzone>
-                        <button className="button-send-text" onClick={this.uploadText.bind(this)}>Отправить текст</button>
+                        <button className="button-send-text row " onClick={this.uploadText.bind(this)}>Отправить текст</button>
                  </div>
+                <div style={{textAlign:'right',color:'#b4b4b4'}}>Write by Andrii Fedosov</div>
             </div>
 
         );

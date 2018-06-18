@@ -28,13 +28,13 @@
 }
 
 .error-page{
-  position:absolute;
+  position:center;
   height: 100%;
   width: 100%;
 
 }
 .img-error{
-    height: 100%;
+  width: 100%;
     background-position: center center;
     background-size: contain;
 }
@@ -66,33 +66,36 @@ body {
 }
 
 .uploadHead{
-
   color: #b4b4b4;
-  text-align: center;
+  text-align: center!important;
+  margin-top:1em;
   height: 50px;
 }
 .drop-zone{
   padding: 1%;
-  text-align: center;
+  text-align: center!important;
   color: #b4b4b4;
-  width: 20%;
-  height: 100%;
+  width: 100%;
+  height: 5em;
   border: 2px dashed  #00bebe;
   border-radius: 5px;
   margin:  10px auto;
   cursor: pointer;
   vertical-align: middle !important;
+  background-color: rgba(0, 105, 105, 0.26);
+  display: inline-block!important;
 
 }
 .form{
   margin: auto;
-  text-align: center;
+  text-align: center!important;
+
 }
 .button-send-text {
   background: -webkit-gradient(linear, 0 0, 0 100%, from(#008181), to(#00bebe), color-stop(0.5, #286e62));
   text-align: center;
   vertical-align: center;
-  margin: auto;
+  margin:auto!important;
   height: 40px;
   border: #008181;
   border-radius: 3px ;
@@ -111,6 +114,7 @@ body {
   color: #b4b4b4;
   background-color: #262c3a ;
   border: 3px dashed  #00bebe;
+  display: inline-block!important
 }
 textarea , input {outline: none}
 .lines , .texts{
@@ -191,4 +195,7 @@ a{
   width:100%;
   text-align: center !important;
   color: crimson!important;
+}
+.vertical{
+  vertical-align: middle!important;
 }
