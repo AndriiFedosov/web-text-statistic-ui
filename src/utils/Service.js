@@ -3,7 +3,7 @@ import Constants from './Constatns.js'
 
 class Service{
 
-    api ='http://web-text-statistic.herokuapp.com/';
+    api ='http://localhost:8080//v1/statistics';
 
     getAllTexts(min):Promise<Response>{
         let url = this.api + '?';
