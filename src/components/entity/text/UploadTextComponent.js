@@ -11,6 +11,7 @@ class UploadTextComponent extends Component{
         this.id='';
         this.service = new FileService();
         this.state = {
+            active:true,
             text:"",
             textName:"Переместите ваш файл сюда.\n Или просто нажмите \n на это поле",
             placeholder:"Да именно сюда нужно ввести ваш текст. Главное нажмите на поле, а там понесется."
@@ -34,10 +35,16 @@ class UploadTextComponent extends Component{
                    this.setState({text:textResult})
                 };
                 this.setState({textName:"Ваш файл : "+file.name})
-
             });
     }
-
+    upload(e){
+        if (!this.state.text){
+            alert('Морти сколько раз я тебе говорил не отправлять пустой документ!')
+        }
+        else {
+            this.uploadText(e)
+        }
+    }
 
     render(){
         return(
@@ -49,7 +56,8 @@ class UploadTextComponent extends Component{
                         <form>
                             <textarea placeholder={this.state.placeholder}
                                       className="text-area-field" cols={125} rows={13}
-                                      onChange={e => this.setState({text:e.target.value})}/>
+                                      onChange={e => {this.setState({text:e.target.value});
+                                      }}/>
                         </form>
                 </div>
                 <div className="form">
@@ -57,7 +65,7 @@ class UploadTextComponent extends Component{
                                   onDrop={(acceptedFiles, rejectedFiles) => {this.onDrop(acceptedFiles,rejectedFiles)}}>
                                   {this.state.textName}
                         </Dropzone>
-                        <button className="button-send-text row " onClick={this.uploadText.bind(this)}>Отправить текст</button>
+                        <button  className="button-send-text row " onClick={this.upload.bind(this)}>Отправить текст</button>
                  </div>
                 <div style={{textAlign:'right',color:'#b4b4b4'}}>Write by Andrii Fedosov</div>
             </div>
