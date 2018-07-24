@@ -23,7 +23,7 @@
 ## How to use UI part:
            - run server part  https://github.com/AndriiFedosov/web-text-statistic
            - enter in console "npm start"
-           - application will be avalaible on link http://localhost:3000/
+           - application will be available on link http://localhost:3000/
            - if you need to stop web server open console and press Ctrl+C and "y"
 
 ## Server part available on [web-text-statistic](https://github.com/AndriiFedosov/web-text-statistic)
